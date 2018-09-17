@@ -5,6 +5,8 @@ using EPiServer.ServiceLocation;
 using Alloy_Demo_Site.Business.Rendering;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
+using Documentation.Plugin;
+using Documentation.Plugin.Infrastructure;
 
 namespace Alloy_Demo_Site.Business.Initialization
 {
@@ -21,6 +23,7 @@ namespace Alloy_Demo_Site.Business.Initialization
                 context.Services.AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
+            context.InitializeDocumentationPlugin();
         }
 
         public void Initialize(InitializationEngine context)

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Editor Documenation</title>
+    @model Documentation.Plugin.Models.EditorViewDocumentationViewModel
+
+    @{
+        Layout = string.Empty;
+    }
+    <script>
+    var jsonModel = @Html.Raw(Model.DocumentationContent);
+
+    window.onload = function () {
+        var body = document.getElementById("documentation");
+        body.innerHTML = jsonModel.body.view.value;
+    }
+    </script>
+    @*<link href="~/Content/documentation.css" rel="stylesheet" />*@
+</head>
+<body id="documentation">
+
+</body>
+</html>
