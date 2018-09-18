@@ -9,5 +9,9 @@ namespace Documentation.Plugin.Infrastructure
 {
     public class ConfluenceConfigurationOptions : IConfigurationOptions
     {
+        public string BaseUrl { get; set; }
+        public string Username { get; set; }
+        public string Key { get; set; }
+        public int DefaultTimeout { get; set; }
     }
 }

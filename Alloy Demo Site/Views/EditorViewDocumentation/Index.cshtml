@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Editor Documenation</title>
+    @model Documentation.Plugin.Models.EditorViewDocumentationViewModel
+
+    @{
+        Layout = string.Empty;
+    }
+
+    @*<link href="~/Content/documentation.css" rel="stylesheet" />*@
+    @*<title>@Model.EpiContent.Name</title>*@
+</head>
+<body id="documentation">
+    @Html.Raw(Model.DocumentationContent)
+</body>
+</html>

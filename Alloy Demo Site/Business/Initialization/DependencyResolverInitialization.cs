@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Web.Mvc;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
@@ -23,7 +24,13 @@ namespace Alloy_Demo_Site.Business.Initialization
                 context.Services.AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
-            context.InitializeDocumentationPlugin();
+            context.InitializeDocumentationPlugin(new ConfluenceConfigurationOptions()
+            {
+                BaseUrl = ConfigurationManager.AppSettings["ConfluenceBaseUrl"],
+                Username = ConfigurationManager.AppSettings["ConfluenceUsername"],
+                Key = ConfigurationManager.AppSettings["ConfluenceApiKey"]
+
+            });
         }
 
         public void Initialize(InitializationEngine context)

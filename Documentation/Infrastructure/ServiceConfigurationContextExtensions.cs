@@ -13,12 +13,6 @@ namespace Documentation.Plugin.Infrastructure
 {
     public static class ServiceConfigurationContextExtensions
     {
-        public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context)
-        {
-            context.Services.AddSingleton<IDocumentationRepository, GithubDocumentationRepository>();
-            context.Services.AddSingleton<IConfigurationOptions, GithubConfigurationOptions>();
-        }
-
         public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, GithubConfigurationOptions options)
         {
             context.Services.AddSingleton<IDocumentationRepository, GithubDocumentationRepository>();

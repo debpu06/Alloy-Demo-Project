@@ -4,6 +4,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using Alloy_Demo_Site.Business.Rendering;
 using Alloy_Demo_Site.Models.Properties;
+using Documentation.Plugin.Interfaces;
 using EPiServer.Web;
 
 namespace Alloy_Demo_Site.Models.Pages
@@ -11,7 +12,7 @@ namespace Alloy_Demo_Site.Models.Pages
     /// <summary>
     /// Base class for all page types
     /// </summary>
-    public abstract class SitePageData : PageData, ICustomCssInContentArea
+    public abstract class SitePageData : PageData, ICustomCssInContentArea,IDocumented
     {
         [Display(
             GroupName = Global.GroupNames.MetaData,
@@ -92,5 +93,7 @@ namespace Alloy_Demo_Site.Models.Pages
         {
             get { return "teaserblock"; } //Page partials should be style like teasers
         }
+
+        public string DocumentationReference { get; set; }
     }
 }
