@@ -94,6 +94,6 @@ namespace Alloy_Demo_Site.Models.Pages
             get { return "teaserblock"; } //Page partials should be style like teasers
         }
 
-        public string DocumentationReference { get; set; }
+        public virtual string DocumentationReference { get; set; }
     }
 }

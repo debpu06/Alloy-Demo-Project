@@ -24,12 +24,19 @@ namespace Alloy_Demo_Site.Business.Initialization
                 context.Services.AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
-            context.InitializeDocumentationPlugin(new ConfluenceConfigurationOptions()
-            {
-                BaseUrl = ConfigurationManager.AppSettings["ConfluenceBaseUrl"],
-                Username = ConfigurationManager.AppSettings["ConfluenceUsername"],
-                Key = ConfigurationManager.AppSettings["ConfluenceApiKey"]
+            //context.InitializeDocumentationPlugin(new ConfluenceConfigurationOptions()
+            //{
+            //    BaseUrl = ConfigurationManager.AppSettings["ConfluenceBaseUrl"],
+            //    Username = ConfigurationManager.AppSettings["ConfluenceUsername"],
+            //    Key = ConfigurationManager.AppSettings["ConfluenceApiKey"]
 
+            //});
+            context.InitializeDocumentationPlugin(new GithubConfigurationOptions()
+            {
+                GithubApiToken = ConfigurationManager.AppSettings["GithubApiKey"],
+                GithubRepositoryName = ConfigurationManager.AppSettings["GithubRepositoryName"],
+                GithubRepositoryOwner = ConfigurationManager.AppSettings["GithubRepositoryOwner"],
+                GithubDocumentationFolder = ConfigurationManager.AppSettings["GithubDocumentationFolder"]
             });
         }
 

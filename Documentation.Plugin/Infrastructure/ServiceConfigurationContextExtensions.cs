@@ -16,13 +16,13 @@ namespace Documentation.Plugin.Infrastructure
         public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, GithubConfigurationOptions options)
         {
             context.Services.AddSingleton<IDocumentationRepository, GithubDocumentationRepository>();
-            context.Services.AddSingleton<IConfigurationOptions, GithubConfigurationOptions>();
+            context.Services.AddSingleton<IConfigurationOptions, GithubConfigurationOptions>(locator => options);
         }
 
         public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, ConfluenceConfigurationOptions options)
         {
             context.Services.AddSingleton<IDocumentationRepository, ConfluenceDocumentationRepository>();
-            context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>();
+            context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>(locator => options);
         }
     }
 }
