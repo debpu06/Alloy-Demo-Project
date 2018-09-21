@@ -13,7 +13,7 @@ namespace Documentation.Plugin.Repository
 {
     public class GithubDocumentationRepository : BaseDocumentationRepository, IDocumentationRepository
     {
-        private GithubConfigurationOptions _configurationOptions;
+        private readonly GithubConfigurationOptions _configurationOptions;
 
         /// <summary>
         /// Initialize the Github repository by creating the http client for the calls

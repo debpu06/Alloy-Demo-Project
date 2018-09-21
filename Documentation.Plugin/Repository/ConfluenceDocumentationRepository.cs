@@ -6,7 +6,7 @@ namespace Documentation.Plugin.Repository
 {
     public class ConfluenceDocumentationRepository : IDocumentationRepository
     {
-        private ConfluenceConfigurationOptions _configurationOptions;
+        private readonly ConfluenceConfigurationOptions _configurationOptions;
         public ConfluenceDocumentationRepository(IConfigurationOptions configurationOptions)
         {
             _configurationOptions = configurationOptions as ConfluenceConfigurationOptions;
