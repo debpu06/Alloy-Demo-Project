@@ -7,6 +7,9 @@ using Documentation.Plugin.Interfaces;
 
 namespace Documentation.Plugin.Infrastructure
 {
+    /// <summary>
+    /// Confluence configuration options
+    /// </summary>
     public class ConfluenceConfigurationOptions : IConfigurationOptions
     {
         public string BaseUrl { get; set; }

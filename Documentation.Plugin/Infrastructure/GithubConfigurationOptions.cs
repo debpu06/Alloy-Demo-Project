@@ -7,6 +7,9 @@ using Documentation.Plugin.Interfaces;
 
 namespace Documentation.Plugin.Infrastructure
 {
+    /// <summary>
+    /// Github repository conifiguration options
+    /// </summary>
     public class GithubConfigurationOptions : IConfigurationOptions
     {
         public string GithubRepositoryOwner { get; set; }

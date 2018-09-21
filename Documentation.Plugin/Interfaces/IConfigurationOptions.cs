@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Documentation.Plugin.Interfaces
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IConfigurationOptions
     {
     }

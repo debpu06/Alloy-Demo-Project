@@ -374,12 +374,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Documentation\Documentation.Plugin.csproj">
-      <Project>{a7628bc6-30d3-45ea-bab9-fc87b1f681e8}</Project>
-      <Name>Documentation.Plugin</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ClientResources\Images\icons\layoutIcons24x24.png" />
     <Content Include="ClientResources\Scripts\Editors\StringList.js" />
     <Content Include="ClientResources\Styles\LayoutIcons.css" />
@@ -510,6 +504,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Documentation.Plugin\Documentation.Plugin.csproj">
+      <Project>{a7628bc6-30d3-45ea-bab9-fc87b1f681e8}</Project>
+      <Name>Documentation.Plugin</Name>
+    </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

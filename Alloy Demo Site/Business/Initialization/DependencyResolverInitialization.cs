@@ -36,7 +36,8 @@ namespace Alloy_Demo_Site.Business.Initialization
                 GithubApiToken = ConfigurationManager.AppSettings["GithubApiKey"],
                 GithubRepositoryName = ConfigurationManager.AppSettings["GithubRepositoryName"],
                 GithubRepositoryOwner = ConfigurationManager.AppSettings["GithubRepositoryOwner"],
-                GithubDocumentationFolder = ConfigurationManager.AppSettings["GithubDocumentationFolder"]
+                GithubDocumentationFolder = ConfigurationManager.AppSettings["GithubDocumentationFolder"],
+                GithubBranch = ConfigurationManager.AppSettings["GithubBranch"]
             });
         }
 
