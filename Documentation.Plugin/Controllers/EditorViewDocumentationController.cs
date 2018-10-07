@@ -43,7 +43,10 @@ namespace Documentation.Plugin.Controllers
                 if (!string.IsNullOrEmpty(result))
                 {
                     model.DocumentationContent = result;
-                    return View(model);
+                }
+                else
+                {
+                    model.DocumentationContent = $"<p>No documentation exists for: {currentContent.DocumentationReference}</p>";
                 }
             }
             catch (Exception e)

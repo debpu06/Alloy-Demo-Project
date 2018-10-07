@@ -24,7 +24,7 @@ namespace Documentation.Plugin.Github.Repository
                 throw new ArgumentException(typeof(GithubConfigurationOptions).FullName);
             }
 
-            BuildHttpClient(_configurationOptions.GithubRepositoryOwner, _configurationOptions.GithubApiToken);
+            BuildHttpClient(_configurationOptions.GithubRepositoryOwner, _configurationOptions.GithubApiToken, _configurationOptions.GithubApiUrl);
         }
 
         /// <summary>

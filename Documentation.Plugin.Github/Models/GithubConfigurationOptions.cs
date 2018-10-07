@@ -10,6 +10,7 @@ namespace Documentation.Plugin.Github.Models
         public string GithubRepositoryOwner { get; set; }
         public string GithubRepositoryName { get; set; }
         public string GithubApiToken { get; set; }
+        public string GithubApiUrl { get; set; }
         public string GithubDocumentationFolder { get; set; }
         public string GithubBranch { get; set; }
     }

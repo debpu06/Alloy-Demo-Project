@@ -15,10 +15,10 @@ namespace Documentation.Plugin.Core.Repository
         /// </summary>
         /// <param name="userName">api user</param>
         /// <param name="token">api authorization token</param>
-        protected void BuildHttpClient(string userName, string token)
+        protected void BuildHttpClient(string userName, string token, string apiUrl)
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://api.github.com");
+            _client.BaseAddress = new Uri(apiUrl);
             _client.DefaultRequestHeaders.Authorization = GetBasicAuthHeader(userName, token);
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _client.DefaultRequestHeaders.Add("User-Agent", "Anything");
