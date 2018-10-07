@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Documentation.Plugin.Interfaces
+namespace Documentation.Plugin.Core.Interfaces
 {
     /// <summary>
     /// 

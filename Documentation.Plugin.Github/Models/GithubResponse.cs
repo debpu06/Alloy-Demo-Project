@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace Documentation.Plugin.Repository.Models
+namespace Documentation.Plugin.Github.Models
 {
     public class GithubResponse
     {

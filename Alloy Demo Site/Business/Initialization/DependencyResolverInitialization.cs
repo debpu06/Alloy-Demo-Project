@@ -4,9 +4,9 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using Alloy_Demo_Site.Business.Rendering;
+using Documentation.Plugin.Github.Models;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using Documentation.Plugin;
 using Documentation.Plugin.Infrastructure;
 
 namespace Alloy_Demo_Site.Business.Initialization
@@ -24,6 +24,7 @@ namespace Alloy_Demo_Site.Business.Initialization
                 context.Services.AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
+            //Confluence documentation implementation
             //context.InitializeDocumentationPlugin(new ConfluenceConfigurationOptions()
             //{
             //    BaseUrl = ConfigurationManager.AppSettings["ConfluenceBaseUrl"],
@@ -31,6 +32,7 @@ namespace Alloy_Demo_Site.Business.Initialization
             //    Key = ConfigurationManager.AppSettings["ConfluenceApiKey"]
 
             //});
+            //Github documentation implementation
             context.InitializeDocumentationPlugin(new GithubConfigurationOptions()
             {
                 GithubApiToken = ConfigurationManager.AppSettings["GithubApiKey"],

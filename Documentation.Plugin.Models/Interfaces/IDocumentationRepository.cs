@@ -1,5 +1,5 @@
 ﻿
-namespace Documentation.Plugin.Interfaces
+namespace Documentation.Plugin.Core.Interfaces
 {
     /// <summary>
     /// Interface for documentation repository

@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Web;
-using Documentation.Plugin.Infrastructure;
-using Documentation.Plugin.Interfaces;
-using Documentation.Plugin.Repository.Models;
+using Documentation.Plugin.Core.Interfaces;
+using Documentation.Plugin.Core.Repository;
+using Documentation.Plugin.Github.Models;
 using Newtonsoft.Json;
 
-namespace Documentation.Plugin.Repository
+namespace Documentation.Plugin.Github.Repository
 {
     public class GithubDocumentationRepository : BaseDocumentationRepository, IDocumentationRepository
     {
@@ -49,8 +44,8 @@ namespace Documentation.Plugin.Repository
 
             var deserializedObject = JsonConvert.DeserializeObject<GithubResponse>(responseData);
 
-            var documentMarkdown = GetDocumentationData(deserializedObject.DownloadUrl);
-
+            var documentMarkdown = GetDocumentationData(deserializedObject.DownloadUrl) ?? string.Empty;
+            
             return Markdig.Markdown.ToHtml(documentMarkdown);
         }
     }

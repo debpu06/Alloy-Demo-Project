@@ -4,6 +4,7 @@ using EPiServer;
 using EPiServer.Core;
 using System;
 using System.Web.Mvc;
+using Documentation.Plugin.Core.Interfaces;
 
 namespace Documentation.Plugin.Controllers
 {

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace Documentation.Plugin.Repository
+namespace Documentation.Plugin.Core.Repository
 {
     public class BaseDocumentationRepository
     {

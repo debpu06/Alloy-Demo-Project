@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Documentation.Plugin.Interfaces;
+﻿using Documentation.Plugin.Core.Interfaces;
 
-namespace Documentation.Plugin.Infrastructure
+namespace Documentation.Plugin.Confluence.Models
 {
     /// <summary>
     /// Confluence configuration options

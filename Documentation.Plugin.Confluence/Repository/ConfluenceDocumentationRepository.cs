@@ -1,8 +1,8 @@
 ﻿using System;
-using Documentation.Plugin.Infrastructure;
-using Documentation.Plugin.Interfaces;
+using Documentation.Plugin.Confluence.Models;
+using Documentation.Plugin.Core.Interfaces;
 
-namespace Documentation.Plugin.Repository
+namespace Documentation.Plugin.Confluence.Repository
 {
     public class ConfluenceDocumentationRepository : IDocumentationRepository
     {
@@ -12,7 +12,7 @@ namespace Documentation.Plugin.Repository
             _configurationOptions = configurationOptions as ConfluenceConfigurationOptions;
             if (_configurationOptions == null)
             {
-                throw new ArgumentException(typeof(GithubConfigurationOptions).FullName);
+                throw new ArgumentException(typeof(ConfluenceConfigurationOptions).FullName);
             }
         }
 

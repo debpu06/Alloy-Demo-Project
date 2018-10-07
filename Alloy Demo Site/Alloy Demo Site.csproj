@@ -506,6 +506,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Documentation.Plugin.Github\Documentation.Plugin.Github.csproj">
+      <Project>{61f7b297-39ee-41a8-ab17-5049ad82619e}</Project>
+      <Name>Documentation.Plugin.Github</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Documentation.Plugin.Models\Documentation.Plugin.Core.csproj">
+      <Project>{EF1D7274-3116-4370-97F8-2BB7D68DCEEE}</Project>
+      <Name>Documentation.Plugin.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Documentation.Plugin\Documentation.Plugin.csproj">
       <Project>{a7628bc6-30d3-45ea-bab9-fc87b1f681e8}</Project>
       <Name>Documentation.Plugin</Name>

@@ -1,13 +1,9 @@
-﻿using Documentation.Plugin.Interfaces;
-using Documentation.Plugin.Repository;
-using EPiServer.ServiceLocation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Documentation.Plugin.Controllers;
-using System.Reflection;
+﻿using EPiServer.ServiceLocation;
+using Documentation.Plugin.Confluence.Models;
+using Documentation.Plugin.Confluence.Repository;
+using Documentation.Plugin.Core.Interfaces;
+using Documentation.Plugin.Github.Models;
+using Documentation.Plugin.Github.Repository;
 
 namespace Documentation.Plugin.Infrastructure
 {
@@ -22,22 +18,34 @@ namespace Documentation.Plugin.Infrastructure
         /// </summary>
         /// <param name="context">instance of ServiceConfiguration</param>
         /// <param name="options">Github configuration options</param>
-        public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, GithubConfigurationOptions options)
+        public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, IConfigurationOptions options)
         {
-            context.Services.AddSingleton<IDocumentationRepository, GithubDocumentationRepository>();
-            context.Services.AddSingleton<IConfigurationOptions, GithubConfigurationOptions>(locator => options);
+            var githubOptions = options as GithubConfigurationOptions;
+            if (githubOptions != null)
+            {
+                context.Services.AddSingleton<IDocumentationRepository, GithubDocumentationRepository>();
+                context.Services.AddSingleton<IConfigurationOptions, GithubConfigurationOptions>(locator => githubOptions);
+                return;
+            }
+            var confluenceOptions = options as ConfluenceConfigurationOptions;
+            if (confluenceOptions != null)
+            {
+                context.Services.AddSingleton<IDocumentationRepository, ConfluenceDocumentationRepository>();
+                context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>(locator => confluenceOptions);
+                return;
+            }
         }
 
-        /// <summary>
-        /// Registers singletons for ConfluenceDocumentationRepository and
-        /// ConfluenceConfigurationOptions 
-        /// </summary>
-        /// <param name="context">instance of ServiceConfiguration</param>
-        /// <param name="options">Confluence configuration options</param>
-        public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, ConfluenceConfigurationOptions options)
-        {
-            context.Services.AddSingleton<IDocumentationRepository, ConfluenceDocumentationRepository>();
-            context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>(locator => options);
-        }
+        ///// <summary>
+        ///// Registers singletons for ConfluenceDocumentationRepository and
+        ///// ConfluenceConfigurationOptions 
+        ///// </summary>
+        ///// <param name="context">instance of ServiceConfiguration</param>
+        ///// <param name="options">Confluence configuration options</param>
+        //public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, ConfluenceConfigurationOptions options)
+        //{
+        //    context.Services.AddSingleton<IDocumentationRepository, ConfluenceDocumentationRepository>();
+        //    context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>(locator => options);
+        //}
     }
 }
