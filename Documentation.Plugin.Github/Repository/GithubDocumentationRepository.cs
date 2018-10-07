@@ -40,12 +40,23 @@ namespace Documentation.Plugin.Github.Repository
                 $"/contents/{_configurationOptions.GithubDocumentationFolder}/{reference}?ref=" +
                 $"{_configurationOptions.GithubBranch}";
 
+            //Getting json information about the file
             var responseData = GetDocumentationData(requestUrl);
 
+            //if information on file is not found return markup message
+            if (string.IsNullOrEmpty(responseData))
+            {
+                //handling will show no documentation message when response is empty string
+                return string.Empty;
+            }
+
+            //Converting file to object
             var deserializedObject = JsonConvert.DeserializeObject<GithubResponse>(responseData);
 
+            //Get markdown from url of file
             var documentMarkdown = GetDocumentationData(deserializedObject.DownloadUrl) ?? string.Empty;
             
+            //return markdown as html
             return Markdig.Markdown.ToHtml(documentMarkdown);
         }
     }
