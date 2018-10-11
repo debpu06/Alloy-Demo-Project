@@ -50,7 +50,7 @@ namespace Documentation.Plugin.Github.Repository
                 return string.Empty;
             }
 
-            //Converting file to object
+            //Converting response to object
             var deserializedObject = JsonConvert.DeserializeObject<GithubResponse>(responseData);
 
             //Get markdown from url of file

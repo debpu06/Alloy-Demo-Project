@@ -35,17 +35,5 @@ namespace Documentation.Plugin.Infrastructure
                 return;
             }
         }
-
-        ///// <summary>
-        ///// Registers singletons for ConfluenceDocumentationRepository and
-        ///// ConfluenceConfigurationOptions 
-        ///// </summary>
-        ///// <param name="context">instance of ServiceConfiguration</param>
-        ///// <param name="options">Confluence configuration options</param>
-        //public static void InitializeDocumentationPlugin(this ServiceConfigurationContext context, ConfluenceConfigurationOptions options)
-        //{
-        //    context.Services.AddSingleton<IDocumentationRepository, ConfluenceDocumentationRepository>();
-        //    context.Services.AddSingleton<IConfigurationOptions, ConfluenceConfigurationOptions>(locator => options);
-        //}
     }
 }

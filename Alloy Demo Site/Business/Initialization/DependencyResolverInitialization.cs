@@ -24,15 +24,6 @@ namespace Alloy_Demo_Site.Business.Initialization
                 context.Services.AddTransient<IContentRenderer, ErrorHandlingContentRenderer>()
                     .AddTransient<ContentAreaRenderer, AlloyContentAreaRenderer>();
             };
-            //Confluence documentation implementation
-            //context.InitializeDocumentationPlugin(new ConfluenceConfigurationOptions()
-            //{
-            //    BaseUrl = ConfigurationManager.AppSettings["ConfluenceBaseUrl"],
-            //    Username = ConfigurationManager.AppSettings["ConfluenceUsername"],
-            //    Key = ConfigurationManager.AppSettings["ConfluenceApiKey"]
-
-            //});
-            //Github documentation implementation
             context.InitializeDocumentationPlugin(new GithubConfigurationOptions()
             {
                 GithubApiToken = ConfigurationManager.AppSettings["GithubApiKey"],

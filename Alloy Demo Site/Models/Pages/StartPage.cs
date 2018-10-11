@@ -1,9 +1,11 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using Alloy_Demo_Site.Models.Blocks;
+using Documentation.Plugin.Interfaces;
 
 namespace Alloy_Demo_Site.Models.Pages
 {
@@ -20,6 +22,17 @@ namespace Alloy_Demo_Site.Models.Pages
         ExcludeOn = new[] { typeof(ContainerPage), typeof(ProductPage), typeof(StandardPage), typeof(ISearchPage), typeof(LandingPage) })] // ...and underneath those we can't create additional start pages
     public class StartPage : SitePageData
     {
+        [Display(
+            Name = "Documentation Reference",
+            GroupName = SystemTabNames.Content,
+            Order = 310)]
+        [CultureSpecific]
+        public override string DocumentationReference
+        {
+            get { return this.GetPropertyValue(page => page.DocumentationReference) ?? "StartPage.md"; }
+            set { this.SetPropertyValue(page => page.DocumentationReference, value); }
+        }
+
         [Display(
             GroupName = SystemTabNames.Content,
             Order = 320)]
