@@ -24,8 +24,24 @@ namespace Alloy_Demo_Site.Business.Initialization
             {
                 // Add content CSS to the default settings.
                 config.Default()
-                    .ContentCss("/static/css/editor.css");
-
+                    .ContentCss("/static/css/editor.css")
+                    .AddSetting("templates", new[]
+                    {
+                        new
+                        {
+                            title = "Article Template 1",
+                            url = "../../Static/html/templates/article_template_1.html",
+                            description = "Template w/title and text"
+                        },
+                        new
+                        {
+                            title = "Article Template 2",
+                            url = "../../Static/html/templates/article_template_2.html",
+                            description = "Template with title and image"
+                        }
+                    })
+                    .AddPlugin("template")
+                    .Toolbar("template");
                 // This will clone the default settings object and extend it by
                 // limiting the block formats for the MainBody property of an ArticlePage.
                 config.For<ArticlePage>(t => t.MainBody)
