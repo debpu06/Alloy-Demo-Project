@@ -40,8 +40,8 @@ namespace Alloy_Demo_Site.Business.Initialization
                             description = "Template with title and image"
                         }
                     })
-                    .AddPlugin("template")
-                    .Toolbar("template");
+                    .AddPlugin($"{DefaultValues.EpiserverPlugins} template")
+                    .Toolbar($"{DefaultValues.Toolbar} | template");
                 // This will clone the default settings object and extend it by
                 // limiting the block formats for the MainBody property of an ArticlePage.
                 config.For<ArticlePage>(t => t.MainBody)
