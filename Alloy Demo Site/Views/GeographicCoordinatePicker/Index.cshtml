@@ -1,0 +1,64 @@
+﻿@model GeographicCoordinateViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <script type="text/javascript">
+        function locationSelected(id, event) {
+            console.log(event.target.getLocation());
+            if (window.opener) {
+                window.opener.setCoordinates(event.target.getLocation().latitude, event.target.getLocation().longitude);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function onMapClick(e) {
+            if (e.targetType == "map") {
+                var point = new Microsoft.Maps.Point(e.getX(), e.getY());
+                var loc = e.target.tryPixelToLocation(point);
+
+                var map = new Microsoft.Maps.Map(document.getElementById("myMap"), { credentials: '@Model.BingApiKey' });
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(loc.latitude, loc.longitude), { color: '#5D89AF', draggable: true });
+
+                Microsoft.Maps.Events.addHandler(pin, 'dragend', function (e) { locationSelected('pushpinDragEnd', e); });
+                Microsoft.Maps.Events.addHandler(map, 'click', onMapClick);
+
+                if (window.opener) {
+                    window.opener.setCoordinates(loc.latitude, loc.longitude);
+                }
+                map.entities.push(pin);
+            }
+        }
+    </script>
+    <script type='text/javascript'>
+        function GetMap() {
+            var map = new Microsoft.Maps.Map('#myMap', { credentials: '@Model.BingApiKey', enableCORS: true });
+            @{
+                var defaultLatitude = Model.Latitude;
+                var defaultLongitude = Model.Longitude;
+            }
+
+            if (@defaultLatitude != 0 && @defaultLongitude != 0) {
+
+                var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(@defaultLatitude, @defaultLongitude), { color: '#5D89AF', draggable: true });
+
+                Microsoft.Maps.Events.addHandler(pin, 'dragend', function (e) { locationSelected('pushpinDragEnd', e); });
+                map.entities.push(pin);
+            }
+            Microsoft.Maps.Events.addHandler(map, 'click', onMapClick);
+        }
+    </script>
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=@Model.BingApiKey'
+            async defer></script>
+</head>
+<body>
+<div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+</html>
