@@ -5,6 +5,8 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using Alloy_Demo_Site.Models.Properties;
+using EPiServer.Shell.ObjectEditing;
+using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
 
 namespace Alloy_Demo_Site.Models.Pages
 {
@@ -32,5 +34,11 @@ namespace Alloy_Demo_Site.Models.Pages
         [CultureSpecific]
         [AllowedTypes(new[] { typeof(IContentData) },new[] { typeof(JumbotronBlock) })]
         public virtual ContentArea RelatedContentArea { get; set; }
+
+        [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<ContentProperty>))]
+        [Display(
+            Name = "Example Property List",
+            GroupName = SystemTabNames.Content)]
+        public virtual IList<ContentProperty> PropertyListExample { get; set; }
     }
 }
